@@ -1,0 +1,1134 @@
+basePath: /
+definitions:
+  genproto.Categories:
+    properties:
+      Categories:
+        items:
+          $ref: '#/definitions/genproto.Category'
+        type: array
+    type: object
+  genproto.Category:
+    properties:
+      CategoryId:
+        type: string
+      Name:
+        type: string
+    type: object
+  genproto.Comment:
+    properties:
+      Body:
+        type: string
+      CommentId:
+        type: string
+      PostId:
+        type: string
+      UserId:
+        type: string
+    type: object
+  genproto.CommentModel:
+    properties:
+      Body:
+        type: string
+      PostId:
+        type: string
+      UserId:
+        type: string
+    type: object
+  genproto.LoginReq:
+    properties:
+      Password:
+        type: string
+      UserName:
+        type: string
+    type: object
+  genproto.Post:
+    properties:
+      Body:
+        type: string
+      CategoryId:
+        type: string
+      PostId:
+        type: string
+      Title:
+        type: string
+      UserId:
+        type: string
+    type: object
+  genproto.PostModel:
+    properties:
+      Body:
+        type: string
+      CategoryId:
+        type: string
+      Title:
+        type: string
+      UserId:
+        type: string
+    type: object
+  genproto.PostTag:
+    properties:
+      PostId:
+        type: string
+      PostTagId:
+        type: string
+      TagId:
+        type: string
+    type: object
+  genproto.PostTagModel:
+    properties:
+      PostId:
+        type: string
+      TagId:
+        type: string
+    type: object
+  genproto.PostTags:
+    properties:
+      PostTags:
+        items:
+          $ref: '#/definitions/genproto.PostTag'
+        type: array
+    type: object
+  genproto.Posts:
+    properties:
+      Posts:
+        items:
+          $ref: '#/definitions/genproto.Post'
+        type: array
+    type: object
+  genproto.Tag:
+    properties:
+      Name:
+        type: string
+      TagId:
+        type: string
+    type: object
+  genproto.TagList:
+    properties:
+      Tags:
+        items:
+          $ref: '#/definitions/genproto.Tag'
+        type: array
+    type: object
+  genproto.Token:
+    properties:
+      AccessToken:
+        type: string
+      RefreshToken:
+        type: string
+    type: object
+  genproto.User:
+    properties:
+      Email:
+        type: string
+      Password:
+        type: string
+      UserId:
+        type: string
+      UserName:
+        type: string
+    type: object
+  genproto.UserModel:
+    properties:
+      Email:
+        type: string
+      Password:
+        type: string
+      UserName:
+        type: string
+    type: object
+  genproto.Users:
+    properties:
+      Users:
+        items:
+          $ref: '#/definitions/genproto.User'
+        type: array
+    type: object
+info:
+  contact: {}
+  title: Online Forum API Documentation
+paths:
+  /admin/post/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: This api Deletes Post
+      parameters:
+      - description: Post Id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: post deleted successfully!
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Deletes Post
+      tags:
+      - Post
+    put:
+      consumes:
+      - application/json
+      description: This api Updates Post
+      parameters:
+      - description: Post Id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Post Data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/genproto.PostModel'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/genproto.Post'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Updates Post
+      tags:
+      - Post
+  /admin/user/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: This api Deletes User
+      parameters:
+      - description: user id to be deleted
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: user deleted successfully
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Deletes User
+      tags:
+      - User
+    put:
+      consumes:
+      - application/json
+      description: This api Updates User
+      parameters:
+      - description: user id to be updated
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: User Data
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/genproto.UserModel'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/genproto.User'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Updates User
+      tags:
+      - User
+  /admin/user/all:
+    get:
+      consumes:
+      - application/json
+      description: This api Get all Users
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/genproto.Users'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Gets all User
+      tags:
+      - User
+  /category/{id}:
+    put:
+      consumes:
+      - application/json
+      description: This api Updates Category by Name
+      parameters:
+      - description: Category ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Category Name
+        in: query
+        name: name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/genproto.Category'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Updates Category
+      tags:
+      - Category
+  /category/{name}:
+    delete:
+      consumes:
+      - application/json
+      description: This api Deletes Category by Name
+      parameters:
+      - description: Category Name
+        in: path
+        name: name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: category deleted successfully!
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Deletes Category
+      tags:
+      - Category
+    get:
+      consumes:
+      - application/json
+      description: This api Gets Category by Name
+      parameters:
+      - description: Category Name
+        in: path
+        name: name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/genproto.Category'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Gets Category
+      tags:
+      - Category
+  /category/all:
+    get:
+      consumes:
+      - application/json
+      description: This api Gets all Categories
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/genproto.Categories'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Gets All Categories
+      tags:
+      - Category
+  /category/create:
+    post:
+      consumes:
+      - application/json
+      description: This api create Category
+      parameters:
+      - description: Category Name
+        in: query
+        name: name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/genproto.Category'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Creates Category
+      tags:
+      - Category
+  /category/posts/{id}:
+    get:
+      consumes:
+      - application/json
+      description: This api Gets Posts by Category
+      parameters:
+      - description: Category ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/genproto.Posts'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Gets Posts by Category
+      tags:
+      - Category
+  /comment/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: This api Deletes Commnet
+      parameters:
+      - description: Comment ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/genproto.Comment'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Deletes Comment
+      tags:
+      - Comment
+    get:
+      consumes:
+      - application/json
+      description: This api Gets Commnet
+      parameters:
+      - description: Comment ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/genproto.Comment'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Gets Comment
+      tags:
+      - Comment
+    put:
+      consumes:
+      - application/json
+      description: This api Updates Commnet
+      parameters:
+      - description: Comment ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Comment Data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/genproto.CommentModel'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/genproto.Comment'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Updates Comment
+      tags:
+      - Comment
+  /comment/all:
+    get:
+      consumes:
+      - application/json
+      description: This api Gets All Commnet
+      parameters:
+      - description: Post ID
+        in: query
+        name: post_id
+        type: string
+      - description: User ID
+        in: query
+        name: user_id
+        type: string
+      - description: Post Body
+        in: query
+        name: body
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/genproto.Comment'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Gets All Comment
+      tags:
+      - Comment
+  /comment/create:
+    post:
+      consumes:
+      - application/json
+      description: This api create Commnet
+      parameters:
+      - description: Comment Data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/genproto.CommentModel'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/genproto.Comment'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Creates Comment
+      tags:
+      - Comment
+  /post-tag/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: This api Deletes PostTag
+      parameters:
+      - description: Post-Tag ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Post-Tag Deleted Successfully
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Deletes PostTag
+      tags:
+      - Post-Tag
+    get:
+      consumes:
+      - application/json
+      description: This api Gets PostTag by id
+      parameters:
+      - description: Post-Tag ID
+        in: path
+        name: id
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/genproto.PostTag'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Gets PostTag by id
+      tags:
+      - Post-Tag
+    put:
+      consumes:
+      - application/json
+      description: This api updates PostTag
+      parameters:
+      - description: Post-Tag ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Post-Tag data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/genproto.PostTagModel'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/genproto.PostTag'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Updates PostTag
+      tags:
+      - Post-Tag
+  /post-tag/all:
+    get:
+      consumes:
+      - application/json
+      description: This api Gets all PostTags
+      parameters:
+      - description: Post ID
+        in: query
+        name: post_id
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/genproto.PostTags'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Gets all PostTags
+      tags:
+      - Post-Tag
+  /post-tag/create:
+    post:
+      consumes:
+      - application/json
+      description: This api Creates PostTag
+      parameters:
+      - description: Post Tag Data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/genproto.PostTagModel'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/genproto.PostTag'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Creates PostTag
+      tags:
+      - Post-Tag
+  /post/{id}:
+    get:
+      consumes:
+      - application/json
+      description: This api Gets Post by id
+      parameters:
+      - description: Post Id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/genproto.Post'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Gets Post
+      tags:
+      - Post
+  /post/{id}/comments:
+    get:
+      consumes:
+      - application/json
+      description: This api Search Comments by Post
+      parameters:
+      - description: Post ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/genproto.Posts'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Search Comments by Post
+      tags:
+      - Post
+  /post/all:
+    get:
+      consumes:
+      - application/json
+      description: This api gets all Post
+      parameters:
+      - description: User Id
+        in: query
+        name: user_id
+        type: string
+      - description: Post Title
+        in: query
+        name: title
+        type: string
+      - description: Category Id
+        in: query
+        name: category_id
+        type: string
+      - description: Post Body
+        in: query
+        name: body
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/genproto.Posts'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Gets all Post
+      tags:
+      - Post
+  /post/create:
+    post:
+      consumes:
+      - application/json
+      description: This api create Post
+      parameters:
+      - description: Post Data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/genproto.PostModel'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/genproto.Post'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Creates Post
+      tags:
+      - Post
+  /post/search:
+    get:
+      consumes:
+      - application/json
+      description: This api Searchs Post
+      parameters:
+      - description: Post Title
+        in: query
+        name: title
+        type: string
+      - description: Post Body
+        in: query
+        name: body
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/genproto.Posts'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Search Post
+      tags:
+      - Post
+  /tag/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: This api Deletes Tag
+      parameters:
+      - description: Tag ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: tag deleted successfully!
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Deletes Tag
+      tags:
+      - Tag
+    put:
+      consumes:
+      - application/json
+      description: This api Updates Tag
+      parameters:
+      - description: Tag Name
+        in: query
+        name: name
+        required: true
+        type: string
+      - description: Tag ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/genproto.Tag'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Updates Tag
+      tags:
+      - Tag
+  /tag/{id}/posts:
+    get:
+      consumes:
+      - application/json
+      description: This api Gets Post By Tag
+      parameters:
+      - description: Tag ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/genproto.Tag'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Gets Post By Tag
+      tags:
+      - Tag
+  /tag/all:
+    get:
+      consumes:
+      - application/json
+      description: This api Gets All Tags
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/genproto.TagList'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Gets All Tags
+      tags:
+      - Tag
+  /tag/create:
+    post:
+      consumes:
+      - application/json
+      description: This api create Tag
+      parameters:
+      - description: Tag Name
+        in: query
+        name: name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/genproto.Tag'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Creates Tag
+      tags:
+      - Tag
+  /tag/get/{name}:
+    get:
+      consumes:
+      - application/json
+      description: This api Gets Tag by Name
+      parameters:
+      - description: Tag Name
+        in: path
+        name: name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/genproto.Tag'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Gets Tag by Name
+      tags:
+      - Tag
+  /tag/popular:
+    get:
+      consumes:
+      - application/json
+      description: This api Gets Popular Tags
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/genproto.TagList'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Gets Popular Tags
+      tags:
+      - Tag
+  /user/{username}:
+    get:
+      consumes:
+      - application/json
+      description: This api Gets User info
+      parameters:
+      - description: username
+        in: path
+        name: username
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/genproto.User'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Gets User info
+      tags:
+      - User
+  /user/login:
+    post:
+      consumes:
+      - application/json
+      description: This api Logins User
+      parameters:
+      - description: login credentials
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/genproto.LoginReq'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/genproto.Token'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Logins User
+      tags:
+      - User
+  /user/posts/{id}:
+    get:
+      consumes:
+      - application/json
+      description: This api Gets Posts of User
+      parameters:
+      - description: User Id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/genproto.Posts'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Gets Posts of User
+      tags:
+      - User
+  /user/register:
+    post:
+      consumes:
+      - application/json
+      description: This api create User
+      parameters:
+      - description: User Data
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/genproto.UserModel'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/genproto.User'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Creates User
+      tags:
+      - User
+securityDefinitions:
+  BearerAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
