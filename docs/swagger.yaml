@@ -313,6 +313,8 @@ paths:
           description: Bad Request
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Updates Category
       tags:
       - Category
@@ -338,6 +340,8 @@ paths:
           description: Bad Request
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Deletes Category
       tags:
       - Category
@@ -362,6 +366,8 @@ paths:
           description: Bad Request
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Gets Category
       tags:
       - Category
@@ -381,6 +387,8 @@ paths:
           description: Bad Request
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Gets All Categories
       tags:
       - Category
@@ -406,6 +414,8 @@ paths:
           description: Bad Request
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Creates Category
       tags:
       - Category
@@ -431,6 +441,8 @@ paths:
           description: Bad Request
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Gets Posts by Category
       tags:
       - Category
@@ -456,6 +468,8 @@ paths:
           description: Bad Request
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Deletes Comment
       tags:
       - Comment
@@ -480,6 +494,8 @@ paths:
           description: Bad Request
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Gets Comment
       tags:
       - Comment
@@ -510,6 +526,8 @@ paths:
           description: Bad Request
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Updates Comment
       tags:
       - Comment
@@ -542,6 +560,8 @@ paths:
           description: Bad Request
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Gets All Comment
       tags:
       - Comment
@@ -568,6 +588,8 @@ paths:
           description: Bad Request
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Creates Comment
       tags:
       - Comment
@@ -593,6 +615,8 @@ paths:
           description: Bad Request
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Deletes PostTag
       tags:
       - Post-Tag
@@ -616,6 +640,8 @@ paths:
           description: Bad Request
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Gets PostTag by id
       tags:
       - Post-Tag
@@ -646,6 +672,8 @@ paths:
           description: Bad Request
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Updates PostTag
       tags:
       - Post-Tag
@@ -670,6 +698,8 @@ paths:
           description: Bad Request
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Gets all PostTags
       tags:
       - Post-Tag
@@ -696,6 +726,8 @@ paths:
           description: Bad Request
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Creates PostTag
       tags:
       - Post-Tag
@@ -871,6 +903,8 @@ paths:
           description: Bad Request
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Deletes Tag
       tags:
       - Tag
@@ -900,6 +934,8 @@ paths:
           description: Bad Request
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Updates Tag
       tags:
       - Tag
@@ -925,6 +961,8 @@ paths:
           description: Bad Request
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Gets Post By Tag
       tags:
       - Tag
@@ -944,6 +982,8 @@ paths:
           description: Bad Request
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Gets All Tags
       tags:
       - Tag
@@ -969,6 +1009,8 @@ paths:
           description: Bad Request
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Creates Tag
       tags:
       - Tag
@@ -994,6 +1036,8 @@ paths:
           description: Bad Request
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Gets Tag by Name
       tags:
       - Tag
@@ -1013,20 +1057,16 @@ paths:
           description: Bad Request
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Gets Popular Tags
       tags:
       - Tag
-  /user/{username}:
+  /user/info:
     get:
       consumes:
       - application/json
       description: This api Gets User info
-      parameters:
-      - description: username
-        in: path
-        name: username
-        required: true
-        type: string
       produces:
       - application/json
       responses:

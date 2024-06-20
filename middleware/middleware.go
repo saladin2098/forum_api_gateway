@@ -2,7 +2,7 @@ package middleware
 
 import (
 	// "errors"
-	"fmt"
+	// "fmt"
 	"net/http"
 	"strings"
 
@@ -33,7 +33,6 @@ func MiddlewareAdmin() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		token := ctx.GetHeader("Authorization")
 		url := (ctx.Request.URL.Path)
-		fmt.Println("fasdf af sdfa sdf3453254admin midnleware")
 
 		claims, err := t.ExtractClaim(token)
 		if err != nil {

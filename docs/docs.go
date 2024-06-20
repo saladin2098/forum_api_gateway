@@ -237,6 +237,11 @@ const docTemplate = `{
         },
         "/category/all": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "This api Gets all Categories",
                 "consumes": [
                     "application/json"
@@ -266,6 +271,11 @@ const docTemplate = `{
         },
         "/category/create": {
             "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "This api create Category",
                 "consumes": [
                     "application/json"
@@ -304,6 +314,11 @@ const docTemplate = `{
         },
         "/category/posts/{id}": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "This api Gets Posts by Category",
                 "consumes": [
                     "application/json"
@@ -342,6 +357,11 @@ const docTemplate = `{
         },
         "/category/{id}": {
             "put": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "This api Updates Category by Name",
                 "consumes": [
                     "application/json"
@@ -387,6 +407,11 @@ const docTemplate = `{
         },
         "/category/{name}": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "This api Gets Category by Name",
                 "consumes": [
                     "application/json"
@@ -423,6 +448,11 @@ const docTemplate = `{
                 }
             },
             "delete": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "This api Deletes Category by Name",
                 "consumes": [
                     "application/json"
@@ -461,6 +491,11 @@ const docTemplate = `{
         },
         "/comment/all": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "This api Gets All Commnet",
                 "consumes": [
                     "application/json"
@@ -510,6 +545,11 @@ const docTemplate = `{
         },
         "/comment/create": {
             "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "This api create Commnet",
                 "consumes": [
                     "application/json"
@@ -550,6 +590,11 @@ const docTemplate = `{
         },
         "/comment/{id}": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "This api Gets Commnet",
                 "consumes": [
                     "application/json"
@@ -586,6 +631,11 @@ const docTemplate = `{
                 }
             },
             "put": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "This api Updates Commnet",
                 "consumes": [
                     "application/json"
@@ -631,6 +681,11 @@ const docTemplate = `{
                 }
             },
             "delete": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "This api Deletes Commnet",
                 "consumes": [
                     "application/json"
@@ -669,6 +724,11 @@ const docTemplate = `{
         },
         "/post-tag/all": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "This api Gets all PostTags",
                 "consumes": [
                     "application/json"
@@ -706,6 +766,11 @@ const docTemplate = `{
         },
         "/post-tag/create": {
             "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "This api Creates PostTag",
                 "consumes": [
                     "application/json"
@@ -746,6 +811,11 @@ const docTemplate = `{
         },
         "/post-tag/{id}": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "This api Gets PostTag by id",
                 "consumes": [
                     "application/json"
@@ -781,6 +851,11 @@ const docTemplate = `{
                 }
             },
             "put": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "This api updates PostTag",
                 "consumes": [
                     "application/json"
@@ -826,6 +901,11 @@ const docTemplate = `{
                 }
             },
             "delete": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "This api Deletes PostTag",
                 "consumes": [
                     "application/json"
@@ -1103,6 +1183,11 @@ const docTemplate = `{
         },
         "/tag/all": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "This api Gets All Tags",
                 "consumes": [
                     "application/json"
@@ -1132,6 +1217,11 @@ const docTemplate = `{
         },
         "/tag/create": {
             "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "This api create Tag",
                 "consumes": [
                     "application/json"
@@ -1170,6 +1260,11 @@ const docTemplate = `{
         },
         "/tag/get/{name}": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "This api Gets Tag by Name",
                 "consumes": [
                     "application/json"
@@ -1208,6 +1303,11 @@ const docTemplate = `{
         },
         "/tag/popular": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "This api Gets Popular Tags",
                 "consumes": [
                     "application/json"
@@ -1237,6 +1337,11 @@ const docTemplate = `{
         },
         "/tag/{id}": {
             "put": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "This api Updates Tag",
                 "consumes": [
                     "application/json"
@@ -1280,6 +1385,11 @@ const docTemplate = `{
                 }
             },
             "delete": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "This api Deletes Tag",
                 "consumes": [
                     "application/json"
@@ -1318,6 +1428,11 @@ const docTemplate = `{
         },
         "/tag/{id}/posts": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "This api Gets Post By Tag",
                 "consumes": [
                     "application/json"
@@ -1343,6 +1458,40 @@ const docTemplate = `{
                         "description": "OK",
                         "schema": {
                             "$ref": "#/definitions/genproto.Tag"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/info": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "This api Gets User info",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "Gets User info",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/genproto.User"
                         }
                     },
                     "400": {
@@ -1474,49 +1623,6 @@ const docTemplate = `{
                 "responses": {
                     "201": {
                         "description": "Created",
-                        "schema": {
-                            "$ref": "#/definitions/genproto.User"
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
-        },
-        "/user/{username}": {
-            "get": {
-                "security": [
-                    {
-                        "BearerAuth": []
-                    }
-                ],
-                "description": "This api Gets User info",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "User"
-                ],
-                "summary": "Gets User info",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "username",
-                        "name": "username",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
                         "schema": {
                             "$ref": "#/definitions/genproto.User"
                         }

@@ -14,6 +14,7 @@ import (
 // @securityDefinitions.apikey BearerAuth
 // @in header
 // @name Authorization
+// TODO kamroq middleware ishlating. Iloji boricha umumiy middleware ishlatishga harakat qiling
 func NewGin(h *handlers.Handler) *gin.Engine {
 	r := gin.Default()
 
@@ -43,7 +44,7 @@ func NewGin(h *handlers.Handler) *gin.Engine {
 	user.Use(middleware.Middleware())
 	{
 		user.POST("/register",h.RegisterUser)
-        user.GET("/:username",h.GetUserInfo)
+        user.GET("/info",h.GetUserInfo)
         user.POST("/login",h.LoginUser)
 		user.GET("/posts/:id",h.GetUserPosts)
 	}
